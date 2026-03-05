@@ -1,0 +1,322 @@
+:root {
+  --bg: #050816;
+  --bg-elevated: #0f172a;
+  --bg-elevated-soft: #020617;
+  --accent: #38bdf8;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --danger: #f97373;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --shadow-soft: 0 22px 60px rgba(15, 23, 42, 0.8);
+  --border-subtle: 1px solid rgba(148, 163, 184, 0.35);
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(circle at top, #1d283a 0, #020617 55%, #020617 100%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 40px;
+}
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.9rem;
+  letter-spacing: 0.03em;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.panel {
+  background: radial-gradient(circle at top left, #0f172a 0, #020617 60%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: var(--border-subtle);
+  padding: 20px 18px 18px;
+  margin-bottom: 18px;
+}
+
+.panel h2 {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+}
+
+.hint {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  appearance: none;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #020617, #020617);
+  color: var(--text);
+  font-size: 0.9rem;
+  padding: 7px 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.08s ease, box-shadow 0.15s ease;
+}
+
+button.primary {
+  border-color: rgba(56, 189, 248, 0.8);
+  background: radial-gradient(circle at top left, #0ea5e9 0, #0369a1 35%, #020617 100%);
+  box-shadow: 0 10px 40px rgba(56, 189, 248, 0.5);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+textarea {
+  width: 100%;
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  padding: 10px 11px;
+  color: var(--text);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.88rem;
+  resize: vertical;
+  min-height: 180px;
+}
+
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.error-message {
+  margin-top: 6px;
+  min-height: 1.2em;
+  font-size: 0.85rem;
+  color: var(--danger);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.transcript-card {
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.96));
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  padding: 10px 11px;
+}
+
+.transcript-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.transcript-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.transcript-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.participants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.participant-pill {
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.participant-pill strong {
+  color: var(--text);
+}
+
+.availability-list,
+.slot-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 6px 0 0;
+  font-size: 0.86rem;
+}
+
+.availability-list li,
+.slot-list li {
+  padding: 3px 0;
+}
+
+.availability-list .label,
+.slot-list .label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: var(--muted);
+}
+
+.badge.good {
+  background: var(--accent-soft);
+  border-color: rgba(56, 189, 248, 0.8);
+  color: #e0f2fe;
+}
+
+.badge.warning {
+  border-color: rgba(250, 204, 21, 0.8);
+  color: #facc15;
+}
+
+.badge.low-priority {
+  border-style: dashed;
+  opacity: 0.8;
+}
+
+.assumptions {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.assumptions h3 {
+  font-size: 0.96rem;
+  margin: 0 0 4px;
+  color: var(--text);
+}
+
+.assumptions ul {
+  margin: 4px 0 10px;
+  padding-left: 17px;
+}
+
+.assumptions li {
+  margin: 2px 0;
+}
+
+.ics-block {
+  margin-top: 6px;
+  border-radius: 8px;
+  background: #020617;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  padding: 6px 7px 7px;
+}
+
+.ics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.ics-header-title {
+  font-size: 0.83rem;
+  color: var(--muted);
+}
+
+.ics-textarea {
+  width: 100%;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.76rem;
+  resize: vertical;
+  min-height: 90px;
+}
+
+.ics-textarea:focus-visible {
+  outline: none;
+}
+
+.copy-status {
+  font-size: 0.8rem;
+  color: var(--muted);
+  min-width: 80px;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding-inline: 14px;
+  }
+
+  .panel {
+    padding-inline: 14px;
+  }
+
+  .page-header h1 {
+    font-size: 1.6rem;
+  }
+}
+

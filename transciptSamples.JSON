@@ -1,0 +1,130 @@
+{
+  "transcript1": {
+    "id": 1,
+    "call_info": "Appt viewing call – Jul 9, 2025 15:45",
+    "participants": [
+      {
+        "name": "Sophie Marshall",
+        "role": "real estate agent"
+      },
+      {
+        "name": "Thomas Brown",
+        "role": "prospective tenant"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Thomas, thanks for jumping on the call. So you’d like to visit the apartment at 14 Lilac Street?"
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Yes, absolutely, I’m really interested. I’m available Tuesday or Wednesday next week, preferably in the morning — say between 9am and 12pm."
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Got it. Tuesday morning doesn’t work for me, I have back-to-back viewings until 11. Wednesday morning is totally fine though. Shall we say 10am?"
+      },
+      {
+        "speaker": "Thomas",
+        "text": "10am works perfectly for me."
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Great, I’ll put it in the calendar and send you a confirmation by email."
+      }
+    ]
+  },
+  "transcript2": {
+    "id": 2,
+    "call_info": "Appt viewing call – Jul 22, 2025 15:15",
+    "participants": [
+      {
+        "name": "Laura Bennett",
+        "role": "real estate agent"
+      },
+      {
+        "name": "Ryan Hughes",
+        "role": "prospective tenant"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Ryan, thanks for your time. Before I send you anything formal, I just want to get a sense of your availability for the viewing. What does your schedule look like over the next two weeks?"
+      },
+      {
+        "speaker": "Ryan",
+        "text": "Sure. This week is pretty packed honestly. Next week I'm fairly open — Tuesday and Thursday work well for me, and I'm flexible on times, though I'd prefer not too early in the morning, so nothing before 10am ideally. Friday next week could work too but it's my last resort."
+      },
+      {
+        "speaker": "Laura",
+        "text": "Good to know. And is there anyone else visiting with you, or just yourself?"
+      },
+      {
+        "speaker": "Ryan",
+        "text": "Just me."
+      },
+      {
+        "speaker": "Laura",
+        "text": "Perfect. I need to check with the current tenant about access windows — they're still in the property. I'll come back to you with a couple of options by end of week, does that work?"
+      },
+      {
+        "speaker": "Ryan",
+        "text": "Totally fine, no rush."
+      }
+    ]
+  },
+  "transcript3": {
+    "id": 3,
+    "call_info": "Appt viewing call – Jul 23, 2025 10:45",
+    "participants": [
+      {
+        "name": "Sarah Cole",
+        "role": "real estate agent"
+      },
+      {
+        "name": "Daniel Morris",
+        "role": "prospective tenant"
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi Daniel, thanks for jumping on. So you're interested in the flat on Meridian Road — lovely place, I think you'll like it. I just wanted to have a quick chat before sending anything over. What does your availability look like for a viewing?"
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. So this week is out completely, I'm away on a work trip until Sunday. Next week I'm back and relatively free. Monday I have a team standup in the morning but I'm free from 11:30 onwards. Wednesday is wide open for me. Friday I could do but only in the morning, I have a family thing from 2pm."
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Great, that's helpful. Let me think — I have a pretty busy stretch next week actually. Monday I'm fully booked until 6pm, which is probably too late for a viewing. Wednesday I have appointments in the morning, so I wouldn't be free before 2pm. Friday morning works well for me though, I'm free until noon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Oh, and I should mention — the viewing itself, how long does it typically take? Just so I can plan around it."
+      },
+      {
+        "speaker": "Sarah",
+        "text": "For a flat that size, I'd say 30 to 45 minutes comfortably."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Good to know."
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let me check one thing on my end and I'll send you a confirmation shortly. I just want to make sure parking is available on the days we're considering — the building has a reserved bay I like to use."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "No problem, take your time."
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Great, speak soon."
+      }
+    ]
+  }
+}

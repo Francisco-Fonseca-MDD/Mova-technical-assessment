@@ -1,0 +1,19 @@
+{
+  "name": "mova-meeting-availability-assistant",
+  "version": "0.1.0",
+  "description": "Minimal, browser-only assistant that extracts availabilities from transcripts, finds common slots, and generates simple .ics invites.",
+  "private": true,
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "scheduling",
+    "availability",
+    "transcripts",
+    "ics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {}
+}
+
