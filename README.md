@@ -1,6 +1,6 @@
 ## MOVA – Meeting Availability Assistant
 
-MOVA is a small, React-based, browser-only prototype that takes one or more conversation transcripts and:
+This project is a small, React-based, browser-only prototype that takes one or more conversation transcripts and:
 
 - **Extracts per-participant availability windows** from natural language
 - **Computes common feasible slots** given a target meeting duration
