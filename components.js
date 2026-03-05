@@ -46,8 +46,20 @@ function TranscriptAvailabilities({ transcriptKey, transcript }) {
 
 function TranscriptSlots({ transcriptKey, transcript }) {
   const perParticipant = buildParticipantAvailabilities(transcript);
-  const commonSlots = computeCommonSlots(perParticipant);
+  const baseSlots = computeCommonSlots(perParticipant);
   const [copyStatus, setCopyStatus] = React.useState("");
+
+  let commonSlots = baseSlots;
+  if (baseSlots.length > 0) {
+    const refined = refineFirstSlotWithTranscript(
+      transcript,
+      baseSlots[0],
+      DEFAULT_MEETING_DURATION_MIN,
+    );
+    if (refined) {
+      commonSlots = [refined].concat(baseSlots.slice(1));
+    }
+  }
 
   const bestSlot = commonSlots[0];
   const summary =

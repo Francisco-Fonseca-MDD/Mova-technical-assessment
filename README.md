@@ -4,7 +4,7 @@ MOVA is a small, React-based, browser-only prototype that takes one or more conv
 
 - **Extracts per-participant availability windows** from natural language
 - **Computes common feasible slots** given a target meeting duration
-- **Suggests a concrete meeting time** (earliest feasible slot) and
+- **Suggests a concrete meeting time** (earliest feasible slot), nudged towards explicitly agreed times when present, and
 - **Generates a basic `.ics` invitation** that can be imported into most calendar tools
 
 The goal is to demonstrate reasoning around extracting temporal constraints from noisy, natural language transcripts while being explicit about assumptions and limitations.
@@ -20,7 +20,9 @@ The goal is to demonstrate reasoning around extracting temporal constraints from
     - Relative expressions (`this week`, `next week`)
     - Coarse periods (`morning`, `afternoon`, `late afternoon`, `evening`)
     - Simple explicit time ranges (`between 9am and 12pm`, `from 11:30 to 14:00`)
-  - For each utterance that appears to express availability, constructs one or more **time intervals** (JavaScript `Date` ranges) for that speaker.
+    - Lower-bound constraints (`nothing before 10am`, `wouldn’t be free before 2pm`)
+    - “From X onwards” patterns (`from 11:30 onwards`)
+  - For each utterance that appears to express availability, constructs one or more **time intervals** (JavaScript `Date` ranges) for that speaker. The extraction works at the **clause** level (sentences split on `.?!`), so a message can contribute both exclusions and availabilities.
 - **Common slot computation**:
   - For each transcript, merges the availability intervals of all participants and intersects them pairwise to find time windows where everyone is free.
   - Filters out overlaps shorter than a configurable duration (default **30 minutes**).
@@ -28,6 +30,9 @@ The goal is to demonstrate reasoning around extracting temporal constraints from
 - **Invitation generation**:
   - For the primary suggested slot, builds a minimal `VCALENDAR` / `VEVENT` payload as a string.
   - This `.ics` text can be copied from the UI and saved to a file for import into calendar tools.
+ - **Agreed-time refinement**:
+   - Once a common window is found (e.g. Wednesday 09:00–12:00), the engine walks the dialogue backwards looking for a concrete time proposal that lies inside that window (e.g. “Shall we say **10am**?” / “10am works perfectly for me.”).
+   - If such a time exists, the suggested slot is refined to start at that agreed time, with the default duration (e.g. 10:00–10:30).
 
 ### Key assumptions & edge cases
 
@@ -47,11 +52,28 @@ The goal is to demonstrate reasoning around extracting temporal constraints from
   - The default meeting duration is **30 minutes**. Any overlap shorter than this is discarded as not viable.
   - Future work could make the duration user-configurable.
 - **Negations and exclusions**:
-  - Simple negative phrases like `"doesn't work"`, `"is out completely"`, `"not free"` are treated as **exclusions**, so those windows are not stored as availability.
+  - Negative phrases like `"doesn't work"`, `"is out completely"`, `"fully booked until 6pm"`, `"wouldn't be free before 2pm"` are treated as **unavailability** for the clause in which they appear.
+  - Other clauses in the same turn can still contribute availability (e.g. `"Tuesday morning doesn’t work for me … Wednesday morning is totally fine though."` results in no availability on Tuesday but a window on Wednesday).
   - The prototype does not model “soft” preferences like `"last resort"` beyond comments in the text; it only considers hard feasibility.
 - **Ambiguity handling**:
   - When the text is too vague (e.g. `"sometime later"`, `"maybe end of the month"`), the system currently **does not create an interval** instead of guessing.
   - The UI reflects only windows that could be mapped to a specific day/week and time range using the simple grammar above.
+
+### What the current heuristics capture (examples)
+
+The three bundled sample transcripts are deliberately varied; in particular, the engine is designed to handle cases like:
+
+- **Transcript 1 (Thomas & Sophie)**:
+  - Thomas: `"Tuesday or Wednesday next week … between 9am and 12pm"` → Tuesday & Wednesday next week 09:00–12:00.
+  - Sophie: `"Tuesday morning doesn’t work for me … Wednesday morning is totally fine though. Shall we say 10am?"` → Tuesday excluded, Wednesday next week 09:00–12:00, refined to a suggested **10:00** slot.
+- **Transcript 2 (Ryan & Laura)**:
+  - Ryan: `"Tuesday and Thursday work well for me … nothing before 10am ideally. Friday next week could work too but it's my last resort."`
+  - The engine interprets this as Tuesday, Thursday, and Friday next week **10:00–18:00**: a broad window constrained only by “not before 10am”.
+- **Transcript 3 (Daniel & Sarah)**:
+  - Daniel: `"Monday … I'm free from 11:30 onwards. Wednesday is wide open for me. Friday I could do but only in the morning, I have a family thing from 2pm."` → Monday 11:30–18:00, Wednesday 09:00–18:00, Friday 09:00–12:00.
+  - Sarah: `"Monday I'm fully booked until 6pm … Wednesday … I wouldn't be free before 2pm. Friday morning works well for me though, I'm free until noon."` → Monday excluded, Wednesday 14:00–18:00, Friday 09:00–12:00.
+
+These examples are surfaced directly in the UI so reviewers can see both the raw dialogue and the interpreted windows side by side.
 
 ### How to run
 
